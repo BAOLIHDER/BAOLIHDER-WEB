@@ -29,6 +29,10 @@
         .dots-container { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.75rem; min-height: 8px; }
         .dot { width: 6px; height: 6px; border-radius: 50%; background: #e5e7eb; transition: all 0.3s; cursor: pointer; }
         .dot.active { background: #3b82f6; width: 15px; border-radius: 10px; }
+
+        /* 【大隆新增】型號連結專用樣式 - 點擊下載感 */
+        .model-link { color: #2563eb; transition: all 0.2s ease; text-decoration: none; border-bottom: 1px solid transparent; }
+        .model-link:hover { color: #1d4ed8; border-bottom: 1px solid #1d4ed8; }
     </style>
 </head>
 <body class="bg-[#0b0f1a] text-gray-200">
@@ -91,7 +95,7 @@
         <div class="modal-content relative bg-white text-gray-900 w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-3xl p-8 md:p-12 shadow-2xl">
             <button onclick="closeModal('av-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900 text-2xl font-bold">✕</button>
             <h2 class="text-3xl font-bold mb-2 tracking-tight">AV over IP: BAV Series</h2>
-            <p class="text-gray-500 mb-10 text-sm font-medium">⬅ 左右滑動圖片查看更多角度 ➡</p>
+            <p class="text-gray-500 mb-10 text-sm font-medium">⬅ 左右滑動查看細節 / 點擊「藍色型號」下載型錄 ⬇</p>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 
@@ -103,7 +107,10 @@
                             <div class="slide"><img src="images/bav-1080ed-side.png" alt="BAV-1080ED 3"></div>
                         </div>
                     </div>
-                    <div class="dots-container"></div> <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-1080ED</h3>
+                    <div class="dots-container"></div> 
+                    <h3 class="text-lg font-bold mt-4 mb-2">
+                        <a href="pdf/BAV-1080ED.pdf" target="_blank" class="model-link">BAV-1080ED</a>
+                    </h3>
                     <p class="text-xs text-gray-600 font-bold underline">HDMI 1080p Encoder</p>
                 </div>
 
@@ -115,7 +122,9 @@
                         </div>
                     </div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-4K60ED</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-2">
+                        <a href="pdf/BAV-4K60ED.pdf" target="_blank" class="model-link">BAV-4K60ED</a>
+                    </h3>
                     <p class="text-xs text-gray-600 font-bold underline">HDMI 4K60 Transceiver</p>
                 </div>
 
@@ -127,7 +136,9 @@
                         </div>
                     </div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-CTR-200</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-2">
+                        <a href="pdf/BAV-CTR-200.pdf" target="_blank" class="model-link">BAV-CTR-200</a>
+                    </h3>
                     <p class="text-xs text-gray-600 font-bold underline">Controller Pro</p>
                 </div>
 
@@ -137,7 +148,9 @@
                         <div class="slide"><img src="images/bav-1080se-2.png"></div>
                     </div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-1080SE</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-2">
+                        <a href="pdf/BAV-1080SE.pdf" target="_blank" class="model-link">BAV-1080SE</a>
+                    </h3>
                     <p class="text-xs text-gray-600 font-bold underline">Single Encoder</p>
                 </div>
 
@@ -147,7 +160,9 @@
                         <div class="slide"><img src="images/bav-1080sd-2.png"></div>
                     </div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-1080SD</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-2">
+                        <a href="pdf/BAV-1080SD.pdf" target="_blank" class="model-link">BAV-1080SD</a>
+                    </h3>
                     <p class="text-xs text-gray-600 font-bold underline">Single Decoder</p>
                 </div>
 
@@ -157,7 +172,9 @@
                         <div class="slide"><img src="images/bav-ctr-100-2.png"></div>
                     </div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-CTR-100</h3>
+                    <h3 class="text-lg font-bold mt-4 mb-2">
+                        <a href="pdf/BAV-CTR-100.pdf" target="_blank" class="model-link">BAV-CTR-100</a>
+                    </h3>
                     <p class="text-xs text-gray-600 font-bold underline">Controller Basic</p>
                 </div>
 
@@ -177,13 +194,17 @@
                 <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                     <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/sw-l3-24p.png"></div></div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-SW-L3-24P</h3>
+                    <h3 class="text-lg font-bold mt-4">
+                         <a href="pdf/LC-SW-L3-24P.pdf" target="_blank" class="model-link">LC-SW-L3-24P</a>
+                    </h3>
                     <p class="text-sm text-gray-500 font-bold">L3 網管型交換器</p>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                     <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/poe-mg-12.png"></div></div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-POE-MG-12</h3>
+                    <h3 class="text-lg font-bold mt-4">
+                        <a href="pdf/LC-POE-MG-12.pdf" target="_blank" class="model-link">LC-POE-MG-12</a>
+                    </h3>
                     <p class="text-sm text-gray-500 font-bold">工業級 PoE 交換器</p>
                 </div>
             </div>
@@ -199,13 +220,17 @@
                 <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                     <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/ipcam-bullet.png"></div></div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-AI-BULLET-8M</h3>
+                    <h3 class="text-lg font-bold mt-4">
+                        <a href="pdf/LC-AI-BULLET-8M.pdf" target="_blank" class="model-link">LC-AI-BULLET-8M</a>
+                    </h3>
                     <p class="text-sm text-gray-500 font-bold">AI 人臉辨識攝影機</p>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                     <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/ipcam-ptz.png"></div></div></div>
                     <div class="dots-container"></div>
-                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-PTZ-30X-Pro</h3>
+                    <h3 class="text-lg font-bold mt-4">
+                        <a href="pdf/LC-PTZ-30X-Pro.pdf" target="_blank" class="model-link">LC-PTZ-30X-Pro</a>
+                    </h3>
                     <p class="text-sm text-gray-500 font-bold">4K 高速球機</p>
                 </div>
             </div>
@@ -229,7 +254,7 @@
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
-            initSliders(); // 每次打開彈窗重新初始化一次位置
+            initSliders(); 
         }
         function closeModal(id) {
             document.getElementById(id).classList.remove('active');
@@ -237,16 +262,13 @@
         }
         document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(document.querySelector('.modal.active')?.id); });
 
-        // --- 核心輪播邏輯 (智慧化) ---
+        // --- 輪播邏輯 ---
         function initSliders() {
             const viewports = document.querySelectorAll('.slider-viewport');
-            
             viewports.forEach(viewport => {
                 const track = viewport.querySelector('.slider-track');
                 const slides = viewport.querySelectorAll('.slide');
-                const dotContainer = viewport.nextElementSibling; // 抓 dots-container
-                
-                // 1. 動態產生點點 (如果還沒產生過)
+                const dotContainer = viewport.nextElementSibling;
                 if (dotContainer.innerHTML === "" && slides.length > 1) {
                     slides.forEach((_, i) => {
                         const dot = document.createElement('div');
@@ -256,10 +278,7 @@
                         dotContainer.appendChild(dot);
                     });
                 }
-
                 let isDragging = false, startPos = 0, currentTranslate = 0, prevTranslate = 0, currentIndex = 0;
-
-                // 2. 綁定事件
                 viewport.onmousedown = dragStart;
                 viewport.ontouchstart = dragStart;
                 viewport.onmouseup = dragEnd;
@@ -267,46 +286,13 @@
                 viewport.ontouchend = dragEnd;
                 viewport.onmousemove = dragAction;
                 viewport.ontouchmove = dragAction;
-
-                function dragStart(e) {
-                    isDragging = true;
-                    startPos = getPositionX(e);
-                    track.style.transition = 'none';
-                }
-
-                function dragAction(e) {
-                    if (!isDragging) return;
-                    const currentPosition = getPositionX(e);
-                    currentTranslate = prevTranslate + currentPosition - startPos;
-                    track.style.transform = `translateX(${currentTranslate}px)`;
-                }
-
-                function dragEnd() {
-                    isDragging = false;
-                    const movedBy = currentTranslate - prevTranslate;
-                    if (movedBy < -50 && currentIndex < slides.length - 1) currentIndex += 1;
-                    if (movedBy > 50 && currentIndex > 0) currentIndex -= 1;
-                    goToSlide(currentIndex);
-                }
-
-                function getPositionX(e) {
-                    return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                }
-
-                function goToSlide(index) {
-                    currentIndex = index;
-                    const offset = -currentIndex * viewport.offsetWidth;
-                    track.style.transition = 'transform 0.4s ease';
-                    track.style.transform = `translateX(${offset}px)`;
-                    prevTranslate = offset;
-                    // 更新點點
-                    const dots = dotContainer.querySelectorAll('.dot');
-                    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-                }
+                function dragStart(e) { isDragging = true; startPos = getPositionX(e); track.style.transition = 'none'; }
+                function dragAction(e) { if (!isDragging) return; const currentPosition = getPositionX(e); currentTranslate = prevTranslate + currentPosition - startPos; track.style.transform = `translateX(${currentTranslate}px)`; }
+                function dragEnd() { isDragging = false; const movedBy = currentTranslate - prevTranslate; if (movedBy < -50 && currentIndex < slides.length - 1) currentIndex += 1; if (movedBy > 50 && currentIndex > 0) currentIndex -= 1; goToSlide(currentIndex); }
+                function getPositionX(e) { return e.type.includes('touch') ? e.touches[0].clientX : e.clientX; }
+                function goToSlide(index) { currentIndex = index; const offset = -currentIndex * viewport.offsetWidth; track.style.transition = 'transform 0.4s ease'; track.style.transform = `translateX(${offset}px)`; prevTranslate = offset; const dots = dotContainer.querySelectorAll('.dot'); dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex)); }
             });
         }
-
-        // 初始化
         window.onload = initSliders;
     </script>
 </body>
