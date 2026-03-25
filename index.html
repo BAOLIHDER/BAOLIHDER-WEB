@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隆成數位有限公司 | BAOLIHDER Co, LTD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        .gradient-text { background: linear-gradient(90deg, #60A5FA, #2DD4BF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        [data-lang]:not(.active) { display: none; }
+        .active { display: inline-block !important; }
+        
+        /* 彈窗動畫 */
+        .modal { transition: all 0.3s ease; pointer-events: none; opacity: 0; visibility: hidden; z-index: 100; }
+        .modal.active { pointer-events: auto; opacity: 1; visibility: visible; }
+        .modal-content { transform: scale(0.95); transition: all 0.3s ease; }
+        .modal.active .modal-content { transform: scale(1); }
+
+        /* 輪播核心樣式 */
+        .slider-viewport { position: relative; overflow: hidden; border-radius: 0.75rem; background: white; height: 160px; width: 100%; }
+        .slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: grab; height: 100%; }
+        .slider-track:active { cursor: grabbing; }
+        .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 0.5rem; flex-shrink: 0; }
+        .slide img { height: 100%; width: 100%; object-fit: contain; pointer-events: none; }
+        
+        /* 指示圓點 */
+        .dots-container { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.75rem; min-height: 8px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: #e5e7eb; transition: all 0.3s; cursor: pointer; }
+        .dot.active { background: #3b82f6; width: 15px; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-[#0b0f1a] text-gray-200">
+
+    <nav class="flex justify-between items-center py-5 px-8 md:px-16 bg-[#0b0f1a]/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="flex flex-col">
+            <span class="text-white font-bold text-xl tracking-wide">隆成數位有限公司</span>
+            <span class="text-blue-400 text-[10px] tracking-[0.2em] font-medium uppercase">BAOLIHDER Co, LTD</span>
+        </div>
+        <div class="flex items-center space-x-6 md:space-x-10 text-sm tracking-wide">
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-blue-400 transition"><span data-lang="zh" class="active">關於我們</span><span data-lang="en">About</span></a>
+                <a href="#solutions" class="hover:text-blue-400 transition"><span data-lang="zh" class="active">解決方案</span><span data-lang="en">Solutions</span></a>
+                <a href="#contact" class="hover:text-blue-400 transition"><span data-lang="zh" class="active">聯繫窗口</span><span data-lang="en">Contact</span></a>
+            </div>
+            <button onclick="switchLang()" class="border border-blue-500 text-blue-400 px-3 py-1 rounded text-xs hover:bg-blue-500 hover:text-white transition">EN / 中文</button>
+        </div>
+    </nav>
+
+    <section class="relative pt-24 pb-20 px-8 md:px-16 text-center md:text-left border-b border-gray-800/50">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <h2 class="text-blue-500 font-mono text-sm tracking-widest mb-4 uppercase">Professional AV & Network Integration</h2>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1]">
+                <span data-lang="zh" class="active">定義影像連結的<br/>新標準</span>
+                <span data-lang="en">Redefining the Future of <br/><span class="gradient-text">Visual Connectivity.</span></span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10">
+                <span data-lang="zh" class="active">我們是專業 AV、Network 專業廠商。隆成數位 (BAOLIHDER) 專注於高效能、高可靠性的解決方案。</span>
+                <span data-lang="en">Professional AV and Network specialist. BAOLIHDER Co, LTD delivers ultra-stable Pro-AV infrastructure.</span>
+            </p>
+        </div>
+        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+    </section>
+
+    <section id="solutions" class="py-24 px-8 md:px-16 bg-[#0f1420]">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-3xl font-bold text-white mb-16"><span data-lang="zh" class="active">核心解決方案</span><span data-lang="en">Core Solutions</span></h3>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div onclick="openModal('av-modal')" class="cursor-pointer p-10 border border-gray-800 bg-[#161b2a] hover:border-blue-500 transition-all duration-300 group rounded-2xl relative overflow-hidden">
+                    <div class="text-blue-500 mb-6 font-bold tracking-widest">01 / AV</div>
+                    <h4 class="text-xl font-bold text-white mb-4 underline decoration-blue-900 group-hover:decoration-blue-500 transition">AV over IP</h4>
+                    <p class="text-gray-400 text-sm">點擊查看 BAV 系列 4K/1080p 多角度展示產品。</p>
+                </div>
+                <div onclick="openModal('nw-modal')" class="cursor-pointer p-10 border border-gray-800 bg-[#161b2a] hover:border-blue-500 transition-all duration-300 group rounded-2xl relative overflow-hidden">
+                    <div class="text-blue-500 mb-6 font-bold tracking-widest">02 / NW</div>
+                    <h4 class="text-xl font-bold text-white mb-4 underline decoration-blue-900 group-hover:decoration-blue-500 transition">Network Switches</h4>
+                    <p class="text-gray-400 text-sm">針對影音流量優化的網管型交換器系列。</p>
+                </div>
+                <div onclick="openModal('ip-modal')" class="cursor-pointer p-10 border border-gray-800 bg-[#161b2a] hover:border-blue-500 transition-all duration-300 group rounded-2xl relative overflow-hidden">
+                    <div class="text-blue-500 mb-6 font-bold tracking-widest">03 / IP</div>
+                    <h4 class="text-xl font-bold text-white mb-4 underline decoration-blue-900 group-hover:decoration-blue-500 transition">IPCAM Systems</h4>
+                    <p class="text-gray-400 text-sm">智能監控與 AI 影像辨識產品系列。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="av-modal" class="modal fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeModal('av-modal')"></div>
+        <div class="modal-content relative bg-white text-gray-900 w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-3xl p-8 md:p-12 shadow-2xl">
+            <button onclick="closeModal('av-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900 text-2xl font-bold">✕</button>
+            <h2 class="text-3xl font-bold mb-2 tracking-tight">AV over IP: BAV Series</h2>
+            <p class="text-gray-500 mb-10 text-sm font-medium">⬅ 左右滑動圖片查看更多角度 ➡</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport">
+                        <div class="slider-track">
+                            <div class="slide"><img src="images/bav-1080ed.png" alt="BAV-1080ED 1"></div>
+                            <div class="slide"><img src="images/bav-1080ed-back.png" alt="BAV-1080ED 2"></div>
+                            <div class="slide"><img src="images/bav-1080ed-side.png" alt="BAV-1080ED 3"></div>
+                        </div>
+                    </div>
+                    <div class="dots-container"></div> <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-1080ED</h3>
+                    <p class="text-xs text-gray-600 font-bold underline">HDMI 1080p Encoder</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport">
+                        <div class="slider-track">
+                            <div class="slide"><img src="images/bav-4k60ed.png" alt="BAV-4K60ED 1"></div>
+                            <div class="slide"><img src="images/bav-4k60ed-back.png" alt="BAV-4K60ED 2"></div>
+                        </div>
+                    </div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-4K60ED</h3>
+                    <p class="text-xs text-gray-600 font-bold underline">HDMI 4K60 Transceiver</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport">
+                        <div class="slider-track">
+                            <div class="slide"><img src="images/bav-ctr-200.png" alt="BAV-CTR-200 1"></div>
+                            <div class="slide"><img src="images/bav-ctr-200-back.png" alt="BAV-CTR-200 2"></div>
+                        </div>
+                    </div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-CTR-200</h3>
+                    <p class="text-xs text-gray-600 font-bold underline">Controller Pro</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track">
+                        <div class="slide"><img src="images/bav-1080se.png"></div>
+                        <div class="slide"><img src="images/bav-1080se-2.png"></div>
+                    </div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-1080SE</h3>
+                    <p class="text-xs text-gray-600 font-bold underline">Single Encoder</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track">
+                        <div class="slide"><img src="images/bav-1080sd.png"></div>
+                        <div class="slide"><img src="images/bav-1080sd-2.png"></div>
+                    </div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-1080SD</h3>
+                    <p class="text-xs text-gray-600 font-bold underline">Single Decoder</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track">
+                        <div class="slide"><img src="images/bav-ctr-100.png"></div>
+                        <div class="slide"><img src="images/bav-ctr-100-2.png"></div>
+                    </div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4 mb-2">BAV-CTR-100</h3>
+                    <p class="text-xs text-gray-600 font-bold underline">Controller Basic</p>
+                </div>
+
+            </div>
+            <div class="mt-12 text-center">
+                <a href="#contact" onclick="closeModal('av-modal')" class="inline-block bg-blue-600 text-white px-10 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300">索取詳細 BAV 型錄與規格書</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="nw-modal" class="modal fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeModal('nw-modal')"></div>
+        <div class="modal-content relative bg-white text-gray-900 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-8 md:p-12 shadow-2xl">
+            <button onclick="closeModal('nw-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900 text-2xl">✕</button>
+            <h2 class="text-3xl font-bold mb-6 underline decoration-blue-100">Network Infrastructure</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/sw-l3-24p.png"></div></div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-SW-L3-24P</h3>
+                    <p class="text-sm text-gray-500 font-bold">L3 網管型交換器</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/poe-mg-12.png"></div></div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-POE-MG-12</h3>
+                    <p class="text-sm text-gray-500 font-bold">工業級 PoE 交換器</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ip-modal" class="modal fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeModal('ip-modal')"></div>
+        <div class="modal-content relative bg-white text-gray-900 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-8 md:p-12 shadow-2xl">
+            <button onclick="closeModal('ip-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900 text-2xl">✕</button>
+            <h2 class="text-3xl font-bold mb-6 underline decoration-blue-100">Smart Surveillance</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/ipcam-bullet.png"></div></div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-AI-BULLET-8M</h3>
+                    <p class="text-sm text-gray-500 font-bold">AI 人臉辨識攝影機</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <div class="slider-viewport"><div class="slider-track"><div class="slide"><img src="images/ipcam-ptz.png"></div></div></div>
+                    <div class="dots-container"></div>
+                    <h3 class="text-lg font-bold text-blue-600 mt-4">LC-PTZ-30X-Pro</h3>
+                    <p class="text-sm text-gray-500 font-bold">4K 高速球機</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact" class="py-20 px-8 bg-[#0b0f1a] text-center border-t border-gray-800">
+        <h3 class="text-2xl font-bold text-white mb-8 underline decoration-blue-500">CONTACT US</h3>
+        <p class="text-gray-400 font-bold mb-2">Joe | 隆成數位有限公司</p>
+        <p class="text-gray-400 mb-2">Phone: 0912-222-586</p>
+        <p class="text-gray-400 mb-8">Email: bav89851881@gmail.com</p>
+        <p class="text-gray-600 text-[10px] tracking-widest uppercase">© 2026 BAOLIHDER Co, LTD. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // --- 基礎功能 ---
+        function switchLang() {
+            let currentLang = document.querySelector('[data-lang].active').getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
+            document.querySelectorAll('[data-lang]').forEach(el => el.classList.toggle('active', el.getAttribute('data-lang') === currentLang));
+        }
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+            initSliders(); // 每次打開彈窗重新初始化一次位置
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(document.querySelector('.modal.active')?.id); });
+
+        // --- 核心輪播邏輯 (智慧化) ---
+        function initSliders() {
+            const viewports = document.querySelectorAll('.slider-viewport');
+            
+            viewports.forEach(viewport => {
+                const track = viewport.querySelector('.slider-track');
+                const slides = viewport.querySelectorAll('.slide');
+                const dotContainer = viewport.nextElementSibling; // 抓 dots-container
+                
+                // 1. 動態產生點點 (如果還沒產生過)
+                if (dotContainer.innerHTML === "" && slides.length > 1) {
+                    slides.forEach((_, i) => {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot');
+                        if (i === 0) dot.classList.add('active');
+                        dot.onclick = () => goToSlide(i);
+                        dotContainer.appendChild(dot);
+                    });
+                }
+
+                let isDragging = false, startPos = 0, currentTranslate = 0, prevTranslate = 0, currentIndex = 0;
+
+                // 2. 綁定事件
+                viewport.onmousedown = dragStart;
+                viewport.ontouchstart = dragStart;
+                viewport.onmouseup = dragEnd;
+                viewport.onmouseleave = dragEnd;
+                viewport.ontouchend = dragEnd;
+                viewport.onmousemove = dragAction;
+                viewport.ontouchmove = dragAction;
+
+                function dragStart(e) {
+                    isDragging = true;
+                    startPos = getPositionX(e);
+                    track.style.transition = 'none';
+                }
+
+                function dragAction(e) {
+                    if (!isDragging) return;
+                    const currentPosition = getPositionX(e);
+                    currentTranslate = prevTranslate + currentPosition - startPos;
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                }
+
+                function dragEnd() {
+                    isDragging = false;
+                    const movedBy = currentTranslate - prevTranslate;
+                    if (movedBy < -50 && currentIndex < slides.length - 1) currentIndex += 1;
+                    if (movedBy > 50 && currentIndex > 0) currentIndex -= 1;
+                    goToSlide(currentIndex);
+                }
+
+                function getPositionX(e) {
+                    return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                }
+
+                function goToSlide(index) {
+                    currentIndex = index;
+                    const offset = -currentIndex * viewport.offsetWidth;
+                    track.style.transition = 'transform 0.4s ease';
+                    track.style.transform = `translateX(${offset}px)`;
+                    prevTranslate = offset;
+                    // 更新點點
+                    const dots = dotContainer.querySelectorAll('.dot');
+                    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+                }
+            });
+        }
+
+        // 初始化
+        window.onload = initSliders;
+    </script>
+</body>
+</html>
